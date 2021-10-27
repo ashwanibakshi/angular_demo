@@ -10,10 +10,12 @@ import { MainComponent } from './main/main.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import {FormsModule,ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
 import {MatCardModule} from '@angular/material/card'
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import {MatButtonModule} from '@angular/material/button';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
