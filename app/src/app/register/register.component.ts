@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder,FormGroup,Validators} from "@angular/forms";
+import {DataService} from "../data.service";
 
 @Component({
   selector: 'app-register',
@@ -10,9 +11,11 @@ export class RegisterComponent implements OnInit {
   
   formBuild:FormBuilder;
   registerForm:any ;
+  dataService:any;
 
-  constructor(private fb:FormBuilder) { 
+  constructor(private fb:FormBuilder,private dService:DataService) { 
       this.formBuild = fb;
+      this.dataService = dService;
   }
 
   ngOnInit(): void {
@@ -27,6 +30,9 @@ export class RegisterComponent implements OnInit {
 
   submit(){
     console.log(this.registerForm.value.name,this.registerForm.value.email,this.registerForm.value.password)
+     this.dService.demo().subscribe((data)=>{
+       console.log(data);
+     })
   }
 
 }

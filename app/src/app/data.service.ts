@@ -10,6 +10,6 @@ export class DataService {
      
    }
    demo(){
-     return "working";
+     return this.httpService.get("http://localhost:3000/api/v1/demo");
    }
 }
