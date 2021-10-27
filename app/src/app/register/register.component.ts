@@ -22,5 +22,11 @@ export class RegisterComponent implements OnInit {
       password:['',[Validators.required,Validators.minLength(7)]]
     })
   }
+    
+  get f() {return this.registerForm.controls}
+
+  submit(){
+    console.log(this.registerForm.value.name,this.registerForm.value.email,this.registerForm.value.password)
+  }
 
 }

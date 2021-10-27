@@ -3,16 +3,27 @@
     <mat-card style="background-color: rgba(51, 48, 35, 0.63); border:4cm; border-color: aliceblue;">
         <div style="text-align:center; color: orange;">
             <mat-card-title >Register</mat-card-title>
-          </div>
-          <form class="example-form">
-            <mat-form-field class="example-full-width" appearance="fill" style="color: aliceblue;">
-              <!-- <mat-label>Favorite food</mat-label> -->
-              <input  placeholder="Name" class="form-control"><br><br>
-              <input  placeholder="Email" class="form-control"><br><br>
-              <input  placeholder="Passsword" class="form-control" type="password"><br><br>
-             <button mat-raised-button color="primary">Register</button>
-            </mat-form-field>
-          </form>
+          </div><br>
+          <form [formGroup]="registerForm" (ngSubmit)="submit()" novalidate> 
+    
+            <input type="text" name="name" id="name" formControlName="name" class="form-control"><br>
+            <div *ngIf="f.name.invalid && (f.name.dirty || f.name.touched)">
+              <div *ngIf="f.name.errors.required">*Name is required</div>
+              <div *ngIf="f.name.errors.minlength">*Name should have 2 characters</div>
+            </div><br>
+            <input type="text" name="email" id="email" formControlName="email" class="form-control"><br>
+            <div *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)">
+               <div *ngIf="f.email.errors.required">*Email is required</div> 
+               <div *ngIf="f.email.errors.email">*Enter valid email</div>
+            </div><br>
+            <input type="password" name="password" id="password" formControlName="password" class="form-control"><br>
+            <div *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)">
+               <div *ngIf="f.password.errors.required">*Password is required</div>
+               <div *ngIf="f.password.errors.minlength">*Password min length be 7</div>
+            </div><br>
+            <div style="text-align: center;"><button type="submit" value="submit" class="bg-primary btn btn-sm">Submit</button></div>
+           </form>
+          
       </mat-card>
    </div>
 </div>
