@@ -2,6 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder,FormGroup,Validators} from "@angular/forms";
 import {DataService} from "../data.service";
 
+interface demoo {
+  data:[],
+  msg:String
+}
+
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -30,9 +36,12 @@ export class RegisterComponent implements OnInit {
 
   submit(){
     console.log(this.registerForm.value.name,this.registerForm.value.email,this.registerForm.value.password)
-     this.dService.demo().subscribe((data)=>{
-       console.log(data);
+     this.dService.demo().subscribe((dta):any=>{
+       if(dta){
+          let dataaa = dta;
+          console.log(dataaa.hasOwnProperty('msg'))
+       }
      })
   }
-
 }
+ 

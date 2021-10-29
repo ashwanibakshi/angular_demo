@@ -21,7 +21,7 @@
                <div *ngIf="f.password.errors.required">*Password is required</div>
                <div *ngIf="f.password.errors.minlength">*Password min length be 7</div>
             </div><br>
-            <div style="text-align: center;"><button type="submit" value="submit" class="bg-primary btn btn-sm">Submit</button></div>
+            <div style="text-align: center;"><button type="submit" value="submit" class="bg-success btn btn-sm" [disabled]="registerForm.invalid">Submit</button></div>
            </form>
           
       </mat-card>
