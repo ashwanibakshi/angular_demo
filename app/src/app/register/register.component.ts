@@ -1,6 +1,6 @@
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import {Form, FormBuilder,FormGroup,NgForm,Validators} from "@angular/forms";
+import {FormBuilder,FormGroup,Validators} from "@angular/forms";
 import { throwError } from 'rxjs';
 import {DataService} from "../data.service";
 import { User } from '../user';
@@ -19,16 +19,17 @@ interface demoo {
 export class RegisterComponent implements OnInit {
   
   formBuild:FormBuilder;
-  registerForm:any ;
+  registerForm:any;
   dataService:any;
 
   constructor(private fb:FormBuilder,private dService:DataService) { 
-      this.formBuild = fb;
       this.dataService = dService;
+       this.formBuild  = fb;
+      //  this.registerForm = FormGroup;
   }
 
   ngOnInit(): void {
-    this.registerForm = this.fb.group({
+    this.registerForm = this.formBuild.group({
       name:['',[Validators.required,Validators.minLength(2)]],
       email:['',[Validators.required,Validators.email]],
       password:['',[Validators.required,Validators.minLength(7)]]
@@ -46,13 +47,11 @@ export class RegisterComponent implements OnInit {
     }
      this.dService.registerUser(dataa).subscribe((dta)=>{
            
-          console.log(dta);
+          // console.log(dta);
          
               if(dta.msg==="success"){
                 console.log("user is register")
-                this.registerForm.value.name = "",
-                this.registerForm.value.email = "",
-                this.registerForm.value.password = ""
+                this.registerForm.reset();               
               }
               else{
                 console.log(dta.error);
