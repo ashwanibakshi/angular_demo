@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder,FormGroup,Validators} from "@angular/forms";
+import {Form, FormBuilder,FormGroup,NgForm,Validators} from "@angular/forms";
 import {DataService} from "../data.service";
+import { User } from '../user';
 
 interface demoo {
   data:[],
@@ -36,12 +37,28 @@ export class RegisterComponent implements OnInit {
 
   submit(){
     console.log(this.registerForm.value.name,this.registerForm.value.email,this.registerForm.value.password)
-     this.dService.demo().subscribe((dta):any=>{
-       if(dta){
-          let dataaa = dta;
-          console.log(dataaa.hasOwnProperty('msg'))
-       }
-     })
+    let data ={
+      name : this.registerForm.value.name,
+     email : this.registerForm.value.email,
+  password : this.registerForm.value.password
+    }
+     this.dService.registerUser(data).subscribe(dta=>{
+       
+          var dataaa = dta;
+          // console.log(dataaa.hasOwnProperty('msg'))
+         let temp = dataaa; 
+         
+            console.log("user is register")
+           this.registerForm.value.name = "",
+           this.registerForm.value.email = "",
+           this.registerForm.value.password = ""
+                    e
+            console.log(dataaa.hasOwnProperty('error'));
+          
+       
+     },error=>{
+           console.log()
+     });
   }
 }
  
