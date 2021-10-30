@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient,HttpHeaders} from "@angular/common/http";
+import {User} from "./user";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class DataService {
      return this.httpService.get("http://localhost:3000/api/v1/demo");
    }
 
-   registerUser(){
+   registerUser(data:User){
      this.header.append('Content-Type','application/json');
      return this.httpService.post("http://localhost:3000/api/v1/register",{Headers:this.header});
    }
