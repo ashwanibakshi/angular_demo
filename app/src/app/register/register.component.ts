@@ -1,3 +1,4 @@
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import {Form, FormBuilder,FormGroup,NgForm,Validators} from "@angular/forms";
 import { throwError } from 'rxjs';
@@ -38,25 +39,23 @@ export class RegisterComponent implements OnInit {
 
   submit(){
     console.log(this.registerForm.value.name,this.registerForm.value.email,this.registerForm.value.password)
-    let data ={
+    let dataa ={
       name : this.registerForm.value.name,
      email : this.registerForm.value.email,
   password : this.registerForm.value.password
     }
-     this.dService.registerUser(data).subscribe((dta)=>{
-       
+     this.dService.registerUser(dataa).subscribe((dta)=>{
+           
           console.log(dta);
-          // console.log(dataaa.hasOwnProperty('msg'))
-        //  let temp = dataaa; 
-
-              if(dta[0].msg == "success"){
+         
+              if(dta.msg==="success"){
                 console.log("user is register")
                 this.registerForm.value.name = "",
                 this.registerForm.value.email = "",
                 this.registerForm.value.password = ""
               }
               else{
-                console.log(dta[0].error);
+                console.log(dta.error);
               }
             
           
