@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
        this.dService.loginUser(dataa).subscribe((data)=>{
             if(data.data!==undefined && data.data!==null){
                console.log(data.data);
+               window.location.href="/dashboard"
             }
             else{
               console.log(data.error);
