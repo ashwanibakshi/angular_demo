@@ -23,6 +23,6 @@ export class DataService {
 
    loginUser(data:User){
       this.header.append('Content-Type','application/json');
-      return this.httpService.post<User>("http://localhost:3000/api/v1/login",data,{headers:this.header});
+      return this.httpService.post<any>("http://localhost:3000/api/v1/login",data,{headers:this.header});
    }
 }

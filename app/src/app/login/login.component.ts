@@ -33,12 +33,13 @@ export class LoginComponent implements OnInit {
       password : this.loginForm.value.password
        }
        this.dService.loginUser(dataa).subscribe((data)=>{
-            if(data.email!==undefined && data.email!==null){
-               console.log(data);
+            if(data.data!==undefined && data.data!==null){
+               console.log(data.data);
             }
             else{
-              console.log(data);
+              console.log(data.error);
             }
+          this.loginForm.reset()
        },error=>{
             console.log(throwError);
        });
