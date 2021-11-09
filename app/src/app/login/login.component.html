@@ -1,1 +1,25 @@
-<p style="color: aqua;">login works!</p>
+<div class="row justify-content-center" style="margin-top:7%;">
+    <div class="col-sm-7 col-lg-5">
+     <mat-card style="background-color: rgba(51, 48, 35, 0.63); border:4cm; border-color: aliceblue;">
+         <div style="text-align:center; color: orange;">
+             <mat-card-title >Register</mat-card-title>
+           </div><br>
+           <form [formGroup]="loginForm" (ngSubmit)="submit()" novalidate> 
+    
+             <input type="text" name="email" id="email" formControlName="email" class="form-control"><br>
+             <div *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)">
+                <div *ngIf="f.email.errors.required">*Email is required</div> 
+                <div *ngIf="f.email.errors.email">*Enter valid email</div>
+             </div><br>
+             <input type="password" name="password" id="password" formControlName="password" class="form-control"><br>
+             <div *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)">
+                <div *ngIf="f.password.errors.required">*Password is required</div>
+                <div *ngIf="f.password.errors.minlength">*Password min length be 7</div>
+             </div><br>
+             <div style="text-align: center;"><button type="submit" value="submit" class="bg-success btn btn-sm" [disabled]="registerForm.invalid">Submit</button></div>
+            </form>
+           
+       </mat-card>
+    </div>
+ </div>
+ 

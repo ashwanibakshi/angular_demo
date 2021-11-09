@@ -5,10 +5,7 @@ import { throwError } from 'rxjs';
 import {DataService} from "../data.service";
 import { User } from '../user';
 
-interface demoo {
-  data:[],
-  msg:String
-}
+
 
 
 @Component({
