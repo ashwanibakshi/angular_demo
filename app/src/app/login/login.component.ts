@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder,Validator, Validators} from "@angular/forms";
+import { throwError } from 'rxjs';
 import {DataService} from "../data.service";
+import { User } from '../user';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +27,21 @@ export class LoginComponent implements OnInit {
     get f(){return this.loginForm.controls}
 
    submit(){
-     
+       let dataa:User={
+          name : "",
+         email : this.loginForm.value.email,
+      password : this.loginForm.value.password
+       }
+       this.dService.loginUser(dataa).subscribe((data)=>{
+            if(data.email!==undefined && data.email!==null){
+               console.log(data);
+            }
+            else{
+              console.log(data);
+            }
+       },error=>{
+            console.log(throwError);
+       });
    }
 
 }
